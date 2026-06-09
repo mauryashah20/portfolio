@@ -1,6 +1,6 @@
-# 🚀 Yuktava — Maurya Shah's Engineering Portfolio
+# 🚀 Maurya Shah's Engineering Portfolio
 
-Welcome to the official portfolio repository of **Maurya Shah** (Yuktava).
+Welcome to the official portfolio repository of **Maurya Shah**.
 
 This website showcases the projects, skills, and technical work built across **Artificial Intelligence, Embedded Systems, Computer Vision, and Software Development**.
 
