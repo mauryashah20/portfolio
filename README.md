@@ -1,45 +1,29 @@
-# 🚀 Yuktava — Engineering Portfolio
+# 🚀 Yuktava — Maurya Shah's Engineering Portfolio
 
-Welcome to the official portfolio repository of **Team Yuktava**.
+Welcome to the official portfolio repository of **Maurya Shah** (Yuktava).
 
-This website showcases the projects, skills, and technical work built by our team across **Artificial Intelligence, Embedded Systems, Computer Vision, and Software Development**.
+This website showcases the projects, skills, and technical work built across **Artificial Intelligence, Embedded Systems, Computer Vision, and Software Development**.
 
 🌐 **Live Website**
 https://mauryashah20.github.io/
 
 ---
 
-# 👥 Team Yuktava
+# 👤 Developer Profile
 
 ## Maurya Shah
 
-**AI & Embedded Systems Developer**
+**Embedded Systems & Autonomous Platforms Developer**
 
 Focus Areas:
 
-* Artificial Intelligence
-* Computer Vision
-* Embedded Systems
-* Hardware–Software Integration
+* Embedded Systems & Microcontrollers (ESP32, Arduino)
+* Autonomous Control & Stabilization Systems (UAVs)
+* Low-Latency Embedded Networks (ESP-NOW, BLE)
+* Computer Vision & Edge AI (OpenCV, MediaPipe)
 
 GitHub:
 https://github.com/mauryashah20
-
----
-
-## Rutva Jakhiya
-
-**Software & Systems Developer**
-
-Focus Areas:
-
-* Software Development
-* System Design
-* Application Development
-* Problem Solving
-
-GitHub:
-https://github.com/rutvanj
 
 ---
 
@@ -47,26 +31,23 @@ https://github.com/rutvanj
 
 ### Languages
 
+* C++ / C
 * Python
-* C++
 * JavaScript
 * HTML
 * CSS
 
 ### Tools & Technologies
 
-* OpenCV
-* MediaPipe
-* ESP32
-* Arduino
-* Flask
+* ESP32 & Arduino
+* OpenCV & MediaPipe
+* PID Control Systems & IMU Sensors
+* BLE & ESP-NOW Protocols
 * Git & GitHub
 
 ---
 
 # 📂 Featured Projects
-
-## Maurya Shah
 
 ### Smart BLE Garden Valve
 
@@ -98,61 +79,24 @@ Hardware interface system translating analog joystick inputs into digital comman
 
 ---
 
-## Rutva Jakhiya
-
-### AI Resume Analyzer
-
-AI-powered resume analysis system using **OCR and NLP** to evaluate resumes against job descriptions and generate ATS scoring.
-
-### Footstep Power Generation
-
-Embedded energy harvesting system converting mechanical footsteps into electrical power using **piezoelectric sensors and Arduino**.
-
-### Space Explorer
-
-Interactive simulation/game designed to explore celestial bodies and astrophysics simulations.
-
-### Budget Tracker
-
-Full-stack financial application to monitor spending, visualize expenses, and manage budgets efficiently.
-
-### Tic Tac Toe (C++)
-
-Command-line implementation of the classic Tic Tac Toe game demonstrating **object-oriented programming concepts**.
-
-### Number Guessing Game
-
-C++ terminal-based game where players guess a randomly generated number with hint feedback.
-
-### Random Quote Generator
-
-Python CLI tool that displays a random inspirational quote each time the program runs.
-
-### Profile Card UI
-
-Responsive **HTML/CSS profile card component** demonstrating modern UI design techniques.
-
----
-
 # 🌍 Purpose of This Portfolio
 
-This portfolio was created to showcase our work for:
+This portfolio was created to showcase engineering work for:
 
-* Hackathons
+* Embedded hardware demonstrations
 * Technical competitions
-* Engineering project demonstrations
+* Robotics and automation showcases
 * Collaboration opportunities
 
 ---
 
 # 📬 Contact
 
-Maurya Shah
-https://github.com/mauryashah20
-
-Rutva Jakhiya
-https://github.com/rutvanj
+* **GitHub:** https://github.com/mauryashah20
+* **LinkedIn:** https://www.linkedin.com/in/shah-maurya-88a67a3a6
+* **Email:** mauryashh@gmail.com
+* **Phone:** +91 7863801478
 
 ---
 
-⭐ If you like our work, consider starring the repository.
+⭐ If you like my work, consider starring the repository.
