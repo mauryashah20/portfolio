@@ -108,5 +108,15 @@ Water Valve System`
     link: "https://www.glamourphotos.in/",
     status: "public",
     linkLabel: "Visit Website"
+  },
+  {
+    index: "11",
+    title: "PlanSEM",
+    category: "hobby",
+    description: "An automated, AI-powered timetable generator and semester planning mobile application. Features document parsing for syllabus/schedule extraction, an interactive study mentor AI guide, and cross-device cloud synchronization.",
+    tags: ["React Native", "Expo", "Firebase", "Gemini AI", "TypeScript", "Node.js"],
+    link: "https://play.google.com/apps/testing/com.mauryashah.chronostimetable",
+    status: "public",
+    linkLabel: "Get on Play Store"
   }
 ];
