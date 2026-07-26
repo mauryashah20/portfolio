@@ -105,7 +105,7 @@ Water Valve System`
     category: "website",
     description: "A premium portfolio showcase for a photography studio featuring luxury aesthetics and modern transitions.",
     tags: ["HTML5", "CSS3", "Vanilla JS", "Local SEO"],
-    link: "https://www.glamourphotos.in/",
+    link: "https://www.glamoourphotos.in/",
     status: "public",
     linkLabel: "Visit Website"
   },
