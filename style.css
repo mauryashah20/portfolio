@@ -421,10 +421,9 @@ p, span, h1, h2, h3, h4, h5, h6, code, li {
 }
 
 .hero-grid {
-    display: grid;
-    grid-template-columns: 1.25fr 0.75fr;
-    gap: 40px;
-    align-items: center;
+    display: block;
+    max-width: 680px;
+    margin-left: 0;
 }
 
 .status-badge {
@@ -539,7 +538,6 @@ p, span, h1, h2, h3, h4, h5, h6, code, li {
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
     box-shadow: 0 12px 30px rgba(201, 151, 99, 0.4);
 }
 
@@ -552,7 +550,6 @@ p, span, h1, h2, h3, h4, h5, h6, code, li {
 .btn-secondary:hover {
     border-color: var(--accent-glow);
     color: var(--accent-glow);
-    transform: translateY(-2px);
 }
 
 /* Terminal Widget */

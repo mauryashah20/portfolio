@@ -160,31 +160,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       4. 3D GLASS CARD PERSPECTIVE TILT & GLARE EFFECT
+       4. STATIC GLASS CARDS (TILT MOVEMENT DISABLED)
        ========================================================================== */
     function attachTilt(card) {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const rotateX = ((y - centerY) / centerY) * -5;
-            const rotateY = ((x - centerX) / centerX) * 5;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
-
-            const glare = card.querySelector('.glare-overlay');
-            if (glare) {
-                glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(221, 239, 255, 0.1), transparent 60%)`;
-            }
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-        });
+        // Card hover tilt movement disabled per user request
+        return;
     }
 
     document.querySelectorAll('.tilt-card').forEach(card => attachTilt(card));
