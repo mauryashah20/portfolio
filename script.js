@@ -115,12 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     if (preloader) preloader.classList.add('finished');
                     document.body.classList.remove('is-loading');
-
-                    // Hold before animating words into view (500ms delay)
-                    setTimeout(() => {
-                        initHeroChoreography();
-                        initSectionChoreography();
-                    }, 500);
+                    initHeroChoreography();
+                    initSectionChoreography();
                 }, 100);
             }
         }, 20);
@@ -357,9 +353,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const tl = gsap.timeline();
 
+        // 500ms hold (stay completely invisible/hidden) before animating words into view
         tl.fromTo('.hero-anim-1',
             { opacity: 0, y: -15 },
-            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
+            { opacity: 1, y: 0, duration: 0.6, delay: 0.5, ease: 'power2.out' }
         )
             .fromTo('.hero-anim-2 .mask-content',
                 { y: '100%', clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)' },
