@@ -136,82 +136,23 @@ html.lenis, html.lenis body {
     border-radius: 4px;
 }
 
-/* Minimal Custom Cursor */
-@media (hover: hover) and (pointer: fine) {
-    body {
-        cursor: none;
-    }
-    
-    a, button, input, textarea {
-        cursor: none;
-    }
+/* Native Cursor & Text Selection Setup */
+body {
+    cursor: auto !important;
 }
 
-.custom-cursor,
-.custom-cursor * {
-    position: fixed;
-    top: 0;
-    left: 0;
+a, button, input, textarea {
+    cursor: pointer !important;
+}
+
+p, span, h1, h2, h3, h4, h5, h6, code, li {
+    user-select: text !important;
+    -webkit-user-select: text !important;
+}
+
+.custom-cursor {
+    display: none !important;
     pointer-events: none !important;
-    z-index: 9999;
-}
-
-.cursor-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--text-primary);
-    border-radius: 50%;
-    position: fixed;
-    top: -3px;
-    left: -3px;
-    pointer-events: none;
-    transition: transform 0.1s ease;
-}
-
-.cursor-ring {
-    width: 36px;
-    height: 36px;
-    border: 1.5px solid rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    position: fixed;
-    top: -18px;
-    left: -18px;
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
-}
-
-.cursor-text {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    font-weight: 800;
-    color: var(--text-primary);
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-
-.cursor-ring.is-hovered {
-    width: 54px;
-    height: 54px;
-    top: -27px;
-    left: -27px;
-    background: rgba(201, 151, 99, 0.15);
-    border-color: var(--warm-highlight);
-}
-
-.cursor-ring.is-project-hover {
-    width: 70px;
-    height: 70px;
-    top: -35px;
-    left: -35px;
-    background: rgba(10, 18, 28, 0.9);
-    border-color: var(--accent-glow);
-}
-
-.cursor-ring.is-project-hover .cursor-text {
-    opacity: 1;
 }
 
 /* Immersive Preloader Screen */
@@ -289,16 +230,32 @@ html.lenis, html.lenis body {
     letter-spacing: 1.5px;
 }
 
+/* Text Selection Styling */
+::selection {
+    background: var(--warm-highlight);
+    color: #05070D;
+}
+
+/* Preloader Finished Fix */
+.preloader.finished {
+    pointer-events: none !important;
+    visibility: hidden !important;
+    display: none !important;
+}
+
 .preloader.finished .preloader-content {
     opacity: 0;
+    pointer-events: none !important;
 }
 
 .preloader.finished .preloader-curtain.left {
     transform: translateX(-100%);
+    pointer-events: none !important;
 }
 
 .preloader.finished .preloader-curtain.right {
     transform: translateX(100%);
+    pointer-events: none !important;
 }
 
 /* Layout Utilities */
