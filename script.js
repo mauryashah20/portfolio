@@ -77,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* PRELOADER WORKFLOW: Show ENTER EXPERIENCE first -> start music & 1s loading -> enter site */
     const startBtn = document.getElementById('start-btn');
-    const soundBadge = document.querySelector('.sound-prompt-badge');
     const loaderRing = document.getElementById('loader-ring');
     const preloaderSubtext = document.getElementById('preloader-subtext');
 
@@ -85,9 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // 1. Start music immediately on user gesture
         playAudio();
 
-        // 2. Hide Start Button and Prompt Badge, Show Loading Elements
+        // 2. Hide Start Button, Show Loading Elements
         if (startBtn) startBtn.style.display = 'none';
-        if (soundBadge) soundBadge.style.display = 'none';
         if (loaderRing) loaderRing.style.display = 'block';
         if (percentEl) percentEl.style.display = 'block';
         if (preloaderSubtext) preloaderSubtext.style.display = 'block';
