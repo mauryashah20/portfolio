@@ -95,9 +95,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const preloaderSubtext = document.getElementById('preloader-subtext');
+    const startBtn = document.getElementById('start-btn');
+
     let progress = 0;
-    const preloaderDuration = 2200; // minimum 2.2 seconds preloader display
+    const preloaderDuration = 1800;
     const startTime = Date.now();
+    let preloaderCompleted = false;
+
+    function finishPreloader() {
+        if (preloader) preloader.classList.add('finished');
+        document.body.classList.remove('is-loading');
+        initHeroChoreography();
+        initSectionChoreography();
+    }
 
     const interval = setInterval(() => {
         const elapsedTime = Date.now() - startTime;
@@ -108,13 +119,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (progress >= 100) {
             clearInterval(interval);
+            preloaderCompleted = true;
 
-            setTimeout(() => {
-                if (preloader) preloader.classList.add('finished');
-                document.body.classList.remove('is-loading');
-                initHeroChoreography();
-                initSectionChoreography();
-            }, 300);
+            if (audioStarted) {
+                // If audio already playing seamlessly, finish preloader
+                setTimeout(finishPreloader, 300);
+            } else {
+                // Browser blocked background audio without user gesture; show prompt button
+                if (preloaderSubtext) preloaderSubtext.textContent = 'READY TO LAUNCH';
+                if (startBtn) {
+                    startBtn.style.display = 'inline-block';
+                    startBtn.addEventListener('click', () => {
+                        playAudio();
+                        finishPreloader();
+                    });
+                }
+            }
         }
     }, 30);
 
