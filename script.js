@@ -90,9 +90,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (percentEl) percentEl.style.display = 'block';
         if (preloaderSubtext) preloaderSubtext.style.display = 'block';
 
-        // 3. Run 1-second loading progress animation
+        // 3. Run 1.3-second loading progress animation
         let progress = 0;
-        const preloaderDuration = 1000; // 1 second loading screen
+        const preloaderDuration = 1300; // 1.3 seconds loading screen
         const startTime = Date.now();
 
         const interval = setInterval(() => {
