@@ -457,33 +457,39 @@ p, span, h1, h2, h3, h4, h5, h6, code, li {
     100% { opacity: 0.4; }
 }
 
+/* Dynamic Font Color Inversion over Bright Accretion Disk */
+.hero-title,
+.hero-subtitle,
+.hero-role,
+.section-heading {
+    color: #FFFFFF !important;
+    mix-blend-mode: difference !important;
+    position: relative;
+    z-index: 10;
+}
+
 .hero-title {
     font-family: var(--font-heading);
     font-size: clamp(2.8rem, 5.2vw, 4.5rem);
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: -1.5px;
-    color: #FFFFFF;
     margin-bottom: 10px;
-    mix-blend-mode: difference;
 }
 
 .hero-role {
     font-family: var(--font-mono);
     font-size: 0.92rem;
     font-weight: 700;
-    color: var(--warm-highlight);
     letter-spacing: 1px;
     margin-bottom: 22px;
 }
 
 .hero-subtitle {
     font-size: 1.15rem;
-    color: #FFFFFF;
     max-width: 580px;
     margin-bottom: 28px;
     line-height: 1.7;
-    mix-blend-mode: difference;
 }
 
 .hero-tags {
