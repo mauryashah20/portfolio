@@ -38,9 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
             audioStarted = true;
             updateAudioUI(true);
         }).catch(err => {
-            console.log('Audio autoplay blocked by browser policy:', err);
+            console.log('Audio playback error:', err);
             audioStarted = false;
-            // Keep SOUND ON indicated so user interaction unlocks audio seamlessly
             updateAudioUI(true);
         });
     }
@@ -62,25 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Start playing sound immediately when loading screen appears
-    playAudio();
-
-    // Fallback: unlock audio playback on any user click/tap/keypress if blocked by browser policy
-    function unlockAudioOnFirstInteraction() {
-        if (!audioStarted) {
-            playAudio();
-        }
-        window.removeEventListener('click', unlockAudioOnFirstInteraction);
-        window.removeEventListener('keydown', unlockAudioOnFirstInteraction);
-        window.removeEventListener('touchstart', unlockAudioOnFirstInteraction);
-        window.removeEventListener('pointerdown', unlockAudioOnFirstInteraction);
-    }
-
-    window.addEventListener('click', unlockAudioOnFirstInteraction);
-    window.addEventListener('keydown', unlockAudioOnFirstInteraction);
-    window.addEventListener('touchstart', unlockAudioOnFirstInteraction);
-    window.addEventListener('pointerdown', unlockAudioOnFirstInteraction);
-
     // Audio Toggle Button Event Listener
     if (audioToggle && bgAudio) {
         audioToggle.addEventListener('click', (e) => {
@@ -95,48 +75,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const preloaderSubtext = document.getElementById('preloader-subtext');
+    /* PRELOADER WORKFLOW: Show ENTER EXPERIENCE first -> start music & 1s loading -> enter site */
     const startBtn = document.getElementById('start-btn');
+    const loaderRing = document.getElementById('loader-ring');
+    const preloaderSubtext = document.getElementById('preloader-subtext');
 
-    let progress = 0;
-    const preloaderDuration = 1000; // 1 second loading screen
-    const startTime = Date.now();
-    let preloaderCompleted = false;
+    function startExperienceAndPreloader() {
+        // 1. Start music immediately on user gesture
+        playAudio();
 
-    function finishPreloader() {
-        if (preloader) preloader.classList.add('finished');
-        document.body.classList.remove('is-loading');
-        initHeroChoreography();
-        initSectionChoreography();
+        // 2. Hide Start Button, Show Loading Elements
+        if (startBtn) startBtn.style.display = 'none';
+        if (loaderRing) loaderRing.style.display = 'block';
+        if (percentEl) percentEl.style.display = 'block';
+        if (preloaderSubtext) preloaderSubtext.style.display = 'block';
+
+        // 3. Run 1-second loading progress animation
+        let progress = 0;
+        const preloaderDuration = 1000; // 1 second loading screen
+        const startTime = Date.now();
+
+        const interval = setInterval(() => {
+            const elapsedTime = Date.now() - startTime;
+            progress = Math.min(100, Math.floor((elapsedTime / preloaderDuration) * 100));
+
+            if (percentEl) percentEl.textContent = `${progress}%`;
+            if (ringFill) ringFill.style.width = `${progress}%`;
+
+            if (progress >= 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    if (preloader) preloader.classList.add('finished');
+                    document.body.classList.remove('is-loading');
+                    initHeroChoreography();
+                    initSectionChoreography();
+                }, 100);
+            }
+        }, 20);
     }
 
-    const interval = setInterval(() => {
-        const elapsedTime = Date.now() - startTime;
-        progress = Math.min(100, Math.floor((elapsedTime / preloaderDuration) * 100));
-
-        if (percentEl) percentEl.textContent = `${progress}%`;
-        if (ringFill) ringFill.style.width = `${progress}%`;
-
-        if (progress >= 100) {
-            clearInterval(interval);
-            preloaderCompleted = true;
-
-            if (audioStarted) {
-                // If audio already playing seamlessly, finish preloader
-                setTimeout(finishPreloader, 100);
-            } else {
-                // Browser blocked background audio without user gesture; show prompt button
-                if (preloaderSubtext) preloaderSubtext.textContent = 'READY TO LAUNCH';
-                if (startBtn) {
-                    startBtn.style.display = 'inline-block';
-                    startBtn.addEventListener('click', () => {
-                        playAudio();
-                        finishPreloader();
-                    });
-                }
-            }
-        }
-    }, 20);
+    if (startBtn) {
+        startBtn.addEventListener('click', startExperienceAndPreloader);
+    }
 
     /* ==========================================================================
        2. LENIS SMOOTH SCROLL & SCROLL LASER TRACKING
