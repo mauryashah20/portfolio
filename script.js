@@ -75,24 +75,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* PRELOADER WORKFLOW: Show ENTER EXPERIENCE first -> start music & 1s loading -> enter site */
-    const startBtn = document.getElementById('start-btn');
+    /* PRELOADER WORKFLOW: Ask 'Bruh, can I play music?' -> YES/NO -> 1.3s loading -> enter site */
+    const musicQuestionBox = document.getElementById('music-question-box');
+    const musicYesBtn = document.getElementById('music-yes-btn');
+    const musicNoBtn = document.getElementById('music-no-btn');
     const loaderRing = document.getElementById('loader-ring');
     const preloaderSubtext = document.getElementById('preloader-subtext');
 
-    function startExperienceAndPreloader() {
-        // 1. Start music immediately on user gesture
-        playAudio();
+    function startExperienceAndPreloader(shouldPlayMusic) {
+        // 1. Handle Music decision based on user input
+        if (shouldPlayMusic) {
+            playAudio();
+        } else {
+            if (bgAudio) bgAudio.pause();
+            audioStarted = false;
+            updateAudioUI(false);
+        }
 
-        // 2. Hide Start Button, Show Loading Elements
-        if (startBtn) startBtn.style.display = 'none';
+        // 2. Hide Question Box, Show Loading Progress Ring
+        if (musicQuestionBox) musicQuestionBox.style.display = 'none';
         if (loaderRing) loaderRing.style.display = 'block';
         if (percentEl) percentEl.style.display = 'block';
         if (preloaderSubtext) preloaderSubtext.style.display = 'block';
 
         // 3. Run 1.3-second loading progress animation
         let progress = 0;
-        const preloaderDuration = 1500; // 1.3 seconds loading screen
+        const preloaderDuration = 1300; // 1.3 seconds loading screen
         const startTime = Date.now();
 
         const interval = setInterval(() => {
@@ -114,8 +122,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 20);
     }
 
-    if (startBtn) {
-        startBtn.addEventListener('click', startExperienceAndPreloader);
+    if (musicYesBtn) {
+        musicYesBtn.addEventListener('click', () => startExperienceAndPreloader(true));
+    }
+    if (musicNoBtn) {
+        musicNoBtn.addEventListener('click', () => startExperienceAndPreloader(false));
     }
 
     /* ==========================================================================
