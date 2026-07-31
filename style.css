@@ -195,14 +195,20 @@ p, span, h1, h2, h3, h4, h5, h6, code, li {
     align-items: center;
     text-align: center;
     gap: 16px;
+    width: 90%;
+    max-width: 480px;
+    padding: 0 20px;
+    box-sizing: border-box;
     transition: opacity 0.4s ease;
 }
 
 .preloader-logo {
     font-family: var(--font-heading);
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
     font-weight: 800;
     color: var(--text-primary);
+    word-break: normal;
+    white-space: nowrap;
 }
 
 .loader-ring {
