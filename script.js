@@ -11,12 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       1. PRELOADER ENGINE & VIDEO AUTOPLAY ASSURANCE
+       1. PRELOADER ENGINE & VIDEO/AUDIO AUTOPLAY ASSURANCE
        ========================================================================== */
     const preloader = document.getElementById('preloader');
     const percentEl = document.getElementById('preloader-percent');
     const ringFill = document.getElementById('ring-fill');
     const bgVideo = document.getElementById('blackhole-video');
+    const bgAudio = document.getElementById('bg-audio');
+    const audioToggle = document.getElementById('audio-toggle');
 
     if (bgVideo) {
         bgVideo.play().catch(err => {
@@ -24,11 +26,85 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Background Audio autoplay handler
+    let audioStarted = false;
+
+    // Set default UI to SOUND ON
+    updateAudioUI(true);
+
+    function playAudio() {
+        if (!bgAudio) return;
+        bgAudio.play().then(() => {
+            audioStarted = true;
+            updateAudioUI(true);
+        }).catch(err => {
+            console.log('Audio autoplay blocked by browser policy:', err);
+            // Retain SOUND ON in UI so first user interaction seamlessly starts audio
+            audioStarted = false;
+        });
+    }
+
+    function updateAudioUI(isPlaying) {
+        if (!audioToggle) return;
+        const icon = audioToggle.querySelector('.audio-icon');
+        const text = audioToggle.querySelector('.audio-text');
+        if (isPlaying) {
+            if (icon) icon.textContent = '🔊';
+            if (text) text.textContent = 'SOUND ON';
+            audioToggle.classList.add('playing');
+            audioToggle.classList.remove('muted');
+        } else {
+            if (icon) icon.textContent = '🔇';
+            if (text) text.textContent = 'SOUND OFF';
+            audioToggle.classList.remove('playing');
+            audioToggle.classList.add('muted');
+        }
+    }
+
+    // Try playing audio immediately on initialization
+    playAudio();
+
+    // Fallback: unlock audio on first user interaction if blocked by browser policy
+    function unlockAudioOnInteraction() {
+        if (!audioStarted && bgAudio) {
+            playAudio();
+        }
+        window.removeEventListener('click', unlockAudioOnInteraction);
+        window.removeEventListener('keydown', unlockAudioOnInteraction);
+        window.removeEventListener('touchstart', unlockAudioOnInteraction);
+    }
+    window.addEventListener('click', unlockAudioOnInteraction);
+    window.addEventListener('keydown', unlockAudioOnInteraction);
+    window.addEventListener('touchstart', unlockAudioOnInteraction);
+
+    // Audio Toggle Button Event Listener
+    if (audioToggle && bgAudio) {
+        audioToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (bgAudio.paused) {
+                bgAudio.play().then(() => {
+                    audioStarted = true;
+                    updateAudioUI(true);
+                }).catch(err => console.error('Play error:', err));
+            } else {
+                bgAudio.pause();
+                updateAudioUI(false);
+            }
+        });
+    }
+
     let progress = 0;
+    const preloaderDuration = 2200; // minimum 2.2 seconds preloader display
+    const startTime = Date.now();
+
     const interval = setInterval(() => {
-        progress += Math.floor(Math.random() * 14) + 6;
+        const elapsedTime = Date.now() - startTime;
+        progress = Math.min(100, Math.floor((elapsedTime / preloaderDuration) * 100));
+
+        if (percentEl) percentEl.textContent = `${progress}%`;
+        if (ringFill) ringFill.style.width = `${progress}%`;
+
         if (progress >= 100) {
-            progress = 100;
             clearInterval(interval);
 
             setTimeout(() => {
@@ -36,12 +112,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.classList.remove('is-loading');
                 initHeroChoreography();
                 initSectionChoreography();
-            }, 400);
+            }, 300);
         }
-
-        if (percentEl) percentEl.textContent = `${progress}%`;
-        if (ringFill) ringFill.style.width = `${progress}%`;
-    }, 45);
+    }, 30);
 
     /* ==========================================================================
        2. LENIS SMOOTH SCROLL & SCROLL LASER TRACKING

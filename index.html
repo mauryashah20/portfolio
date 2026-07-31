@@ -50,6 +50,12 @@
     <!-- Continuous Scroll Laser Tracking Line -->
     <div id="scroll-laser-line" class="scroll-laser-line"></div>
 
+    <!-- Background Music Audio Track -->
+    <audio id="bg-audio" loop preload="auto">
+        <source src="Video Project 18.m4a" type="audio/mp4">
+        <source src="Video Project 18.m4a" type="audio/x-m4a">
+    </audio>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -63,6 +69,10 @@
                 <a href="#skills" class="nav-item magnetic-target">/skills</a>
                 <a href="#experience" class="nav-item magnetic-target">/exp</a>
                 <a href="#projects" class="nav-item magnetic-target">/projects</a>
+                <button id="audio-toggle" class="audio-toggle-btn magnetic-target playing" aria-label="Toggle Audio">
+                    <span class="audio-icon">🔊</span>
+                    <span class="audio-text">SOUND ON</span>
+                </button>
                 <a href="#contact" class="nav-btn magnetic-target">LET'S TALK</a>
             </div>
 

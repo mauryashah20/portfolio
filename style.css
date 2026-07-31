@@ -354,6 +354,38 @@ p, span, h1, h2, h3, h4, h5, h6, code, li {
     transform: translateY(-2px);
 }
 
+.audio-toggle-btn {
+    font-family: var(--font-mono);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    border: 1px solid var(--border-glass);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.audio-toggle-btn:hover {
+    background: rgba(201, 151, 99, 0.15);
+    border-color: var(--warm-highlight);
+    color: var(--warm-highlight);
+}
+
+.audio-toggle-btn.playing {
+    border-color: var(--warm-highlight);
+    box-shadow: 0 0 10px rgba(201, 151, 99, 0.2);
+}
+
+.audio-toggle-btn.muted {
+    opacity: 0.7;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
 /* Mobile Hamburger Menu */
 .hamburger {
     display: none;
