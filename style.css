@@ -457,13 +457,13 @@ p, span, h1, h2, h3, h4, h5, h6, code, li {
     100% { opacity: 0.4; }
 }
 
-/* Dynamic Font Color Inversion over Bright Accretion Disk */
+/* High-Contrast Video Readability Protection */
 .hero-title,
 .hero-subtitle,
 .hero-role,
 .section-heading {
     color: #FFFFFF !important;
-    mix-blend-mode: difference !important;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.95), 0 0 6px rgba(0, 0, 0, 0.9);
     position: relative;
     z-index: 10;
 }
@@ -481,6 +481,7 @@ p, span, h1, h2, h3, h4, h5, h6, code, li {
     font-family: var(--font-mono);
     font-size: 0.92rem;
     font-weight: 700;
+    color: var(--warm-highlight) !important;
     letter-spacing: 1px;
     margin-bottom: 22px;
 }
@@ -490,6 +491,12 @@ p, span, h1, h2, h3, h4, h5, h6, code, li {
     max-width: 580px;
     margin-bottom: 28px;
     line-height: 1.7;
+}
+
+/* Inverted text state when directly over bright white accretion disk */
+.text-inverted {
+    color: #05070D !important;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.9) !important;
 }
 
 .hero-tags {
