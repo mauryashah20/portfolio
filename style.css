@@ -1100,20 +1100,15 @@ html.lenis, html.lenis body {
 }
 
 /* Contact Section */
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 30px;
+.contact-wrapper {
+    max-width: 720px;
+    margin: 0 auto;
 }
 
 .contact-info-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    will-change: transform, opacity;
-}
-
-.contact-form-card {
     will-change: transform, opacity;
 }
 

@@ -440,11 +440,6 @@ document.addEventListener('DOMContentLoaded', () => {
             { opacity: 0, y: 25 },
             { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
             '-=0.4'
-        )
-        .fromTo('.contact-anim-right',
-            { opacity: 0, y: 25 },
-            { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
-            '-=0.7'
         );
     }
 
