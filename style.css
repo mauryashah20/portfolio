@@ -321,39 +321,6 @@ html.lenis, html.lenis body {
     backdrop-filter: blur(14px);
 }
 
-/* Top Marquee */
-.top-marquee {
-    position: relative;
-    z-index: 10;
-    background: rgba(10, 18, 28, 0.85);
-    backdrop-filter: blur(12px);
-    color: var(--warm-highlight);
-    font-family: var(--font-mono);
-    font-weight: 700;
-    font-size: 0.8rem;
-    padding: 8px 0;
-    overflow: hidden;
-    white-space: nowrap;
-    display: flex;
-    user-select: none;
-    border-bottom: 1px solid var(--border-glass);
-}
-
-.marquee-content {
-    display: flex;
-    gap: 24px;
-    animation: marquee 24s linear infinite;
-}
-
-.marquee-content span {
-    display: inline-block;
-}
-
-@keyframes marquee {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-100%); }
-}
-
 /* Navigation Bar */
 .navbar {
     position: sticky;
