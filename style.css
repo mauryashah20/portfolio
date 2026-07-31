@@ -505,8 +505,9 @@ html.lenis, html.lenis body {
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: -1.5px;
-    color: var(--text-primary);
+    color: #FFFFFF;
     margin-bottom: 10px;
+    mix-blend-mode: difference;
 }
 
 .hero-role {
@@ -520,10 +521,11 @@ html.lenis, html.lenis body {
 
 .hero-subtitle {
     font-size: 1.15rem;
-    color: var(--text-secondary);
+    color: #FFFFFF;
     max-width: 580px;
     margin-bottom: 28px;
     line-height: 1.7;
+    mix-blend-mode: difference;
 }
 
 .hero-tags {
@@ -692,7 +694,8 @@ html.lenis, html.lenis body {
     font-weight: 800;
     letter-spacing: -1px;
     margin-bottom: 50px;
-    color: var(--text-primary);
+    color: #FFFFFF;
+    mix-blend-mode: difference;
 }
 
 .text-underline {
