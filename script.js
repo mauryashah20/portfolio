@@ -98,9 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (percentEl) percentEl.style.display = 'block';
         if (preloaderSubtext) preloaderSubtext.style.display = 'block';
 
-        // 3. Run 1.3-second loading progress animation
+        // 3. Run 800ms (reduced by 500ms) loading progress animation
         let progress = 0;
-        const preloaderDuration = 1300; // 1.3 seconds loading screen
+        const preloaderDuration = 800; // reduced by 500ms (1300ms -> 800ms)
         const startTime = Date.now();
 
         const interval = setInterval(() => {
@@ -115,8 +115,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     if (preloader) preloader.classList.add('finished');
                     document.body.classList.remove('is-loading');
-                    initHeroChoreography();
-                    initSectionChoreography();
+
+                    // Hold before animating words into view (500ms delay)
+                    setTimeout(() => {
+                        initHeroChoreography();
+                        initSectionChoreography();
+                    }, 500);
                 }, 100);
             }
         }, 20);
