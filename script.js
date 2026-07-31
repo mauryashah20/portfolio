@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 3. Run 1.3-second loading progress animation
         let progress = 0;
-        const preloaderDuration = 1300; // 1.3 seconds loading screen
+        const preloaderDuration = 1500; // 1.3 seconds loading screen
         const startTime = Date.now();
 
         const interval = setInterval(() => {
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Smooth Lenis Scroll for all Hash Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
             if (targetId && targetId !== '#') {
                 const targetElement = document.querySelector(targetId);
@@ -342,40 +342,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const tl = gsap.timeline();
 
-        tl.fromTo('.hero-anim-1', 
+        tl.fromTo('.hero-anim-1',
             { opacity: 0, y: -15 },
             { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
         )
-        .fromTo('.hero-anim-2 .mask-content', 
-            { y: '100%', clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)' },
-            { y: '0%', clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 0.7, ease: 'power3.out' },
-            '-=0.3'
-        )
-        .fromTo('.hero-anim-2-sub',
-            { opacity: 0, y: 12 },
-            { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' },
-            '-=0.4'
-        )
-        .fromTo('.hero-anim-3',
-            { opacity: 0, y: 15 },
-            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
-            '-=0.4'
-        )
-        .fromTo('.hero-anim-4 .tag',
-            { opacity: 0, y: 10 },
-            { opacity: 1, y: 0, duration: 0.4, stagger: 0.06, ease: 'power2.out' },
-            '-=0.3'
-        )
-        .fromTo('.hero-anim-5 .btn',
-            { opacity: 0, y: 15 },
-            { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out' },
-            '-=0.2'
-        )
-        .fromTo('.hero-anim-widget',
-            { opacity: 0, y: 25 },
-            { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-            '-=0.6'
-        );
+            .fromTo('.hero-anim-2 .mask-content',
+                { y: '100%', clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)' },
+                { y: '0%', clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 0.7, ease: 'power3.out' },
+                '-=0.3'
+            )
+            .fromTo('.hero-anim-2-sub',
+                { opacity: 0, y: 12 },
+                { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' },
+                '-=0.4'
+            )
+            .fromTo('.hero-anim-3',
+                { opacity: 0, y: 15 },
+                { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
+                '-=0.4'
+            )
+            .fromTo('.hero-anim-4 .tag',
+                { opacity: 0, y: 10 },
+                { opacity: 1, y: 0, duration: 0.4, stagger: 0.06, ease: 'power2.out' },
+                '-=0.3'
+            )
+            .fromTo('.hero-anim-5 .btn',
+                { opacity: 0, y: 15 },
+                { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out' },
+                '-=0.2'
+            )
+            .fromTo('.hero-anim-widget',
+                { opacity: 0, y: 25 },
+                { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
+                '-=0.6'
+            );
     }
 
     function initSectionChoreography() {
@@ -394,21 +394,21 @@ document.addEventListener('DOMContentLoaded', () => {
             { opacity: 0, x: -20 },
             { opacity: 1, x: 0, duration: 0.5, ease: 'power2.out' }
         )
-        .fromTo('.about-anim-heading .mask-content',
-            { clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)' },
-            { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 0.7, ease: 'power3.out' },
-            '-=0.3'
-        )
-        .fromTo('.about-anim-card',
-            { opacity: 0, y: 25 },
-            { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
-            '-=0.4'
-        )
-        .fromTo('.about-anim-stat',
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.5, stagger: 0.12, ease: 'power2.out' },
-            '-=0.5'
-        );
+            .fromTo('.about-anim-heading .mask-content',
+                { clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)' },
+                { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 0.7, ease: 'power3.out' },
+                '-=0.3'
+            )
+            .fromTo('.about-anim-card',
+                { opacity: 0, y: 25 },
+                { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
+                '-=0.4'
+            )
+            .fromTo('.about-anim-stat',
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 0.5, stagger: 0.12, ease: 'power2.out' },
+                '-=0.5'
+            );
 
         // SKILLS CHOREOGRAPHY
         const skillsTl = gsap.timeline({
@@ -423,21 +423,21 @@ document.addEventListener('DOMContentLoaded', () => {
             { opacity: 0, y: -15 },
             { opacity: 1, y: 0, duration: 0.5 }
         )
-        .fromTo('.skills-anim-heading .mask-content',
-            { y: '100%' },
-            { y: '0%', duration: 0.6, ease: 'power3.out' },
-            '-=0.3'
-        )
-        .fromTo('.skills-anim-canvas',
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
-            '-=0.3'
-        )
-        .fromTo('.skills-anim-card',
-            { opacity: 0, y: 25 },
-            { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease: 'power2.out' },
-            '-=0.4'
-        );
+            .fromTo('.skills-anim-heading .mask-content',
+                { y: '100%' },
+                { y: '0%', duration: 0.6, ease: 'power3.out' },
+                '-=0.3'
+            )
+            .fromTo('.skills-anim-canvas',
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
+                '-=0.3'
+            )
+            .fromTo('.skills-anim-card',
+                { opacity: 0, y: 25 },
+                { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease: 'power2.out' },
+                '-=0.4'
+            );
 
         // EXPERIENCE CHOREOGRAPHY
         const expCards = document.querySelectorAll('.exp-anim-card');
@@ -471,16 +471,16 @@ document.addEventListener('DOMContentLoaded', () => {
             { opacity: 0, x: -20 },
             { opacity: 1, x: 0, duration: 0.5 }
         )
-        .fromTo('.proj-anim-heading .mask-content',
-            { clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)' },
-            { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 0.7, ease: 'power3.out' },
-            '-=0.3'
-        )
-        .fromTo('.proj-anim-filters .filter-btn',
-            { opacity: 0, y: 15 },
-            { opacity: 1, y: 0, duration: 0.4, stagger: 0.06, ease: 'power2.out' },
-            '-=0.4'
-        );
+            .fromTo('.proj-anim-heading .mask-content',
+                { clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)' },
+                { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 0.7, ease: 'power3.out' },
+                '-=0.3'
+            )
+            .fromTo('.proj-anim-filters .filter-btn',
+                { opacity: 0, y: 15 },
+                { opacity: 1, y: 0, duration: 0.4, stagger: 0.06, ease: 'power2.out' },
+                '-=0.4'
+            );
 
         // CONTACT CHOREOGRAPHY
         const contactTl = gsap.timeline({
@@ -495,16 +495,16 @@ document.addEventListener('DOMContentLoaded', () => {
             { opacity: 0, y: -15 },
             { opacity: 1, y: 0, duration: 0.5 }
         )
-        .fromTo('.contact-anim-heading .mask-content',
-            { y: '100%' },
-            { y: '0%', duration: 0.6, ease: 'power3.out' },
-            '-=0.3'
-        )
-        .fromTo('.contact-anim-left',
-            { opacity: 0, y: 25 },
-            { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
-            '-=0.4'
-        );
+            .fromTo('.contact-anim-heading .mask-content',
+                { y: '100%' },
+                { y: '0%', duration: 0.6, ease: 'power3.out' },
+                '-=0.3'
+            )
+            .fromTo('.contact-anim-left',
+                { opacity: 0, y: 25 },
+                { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
+                '-=0.4'
+            );
     }
 
     // Counter animation for stat numbers
@@ -601,8 +601,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         projectGrid.innerHTML = '';
 
-        const filtered = category === 'all' 
-            ? projectsData 
+        const filtered = category === 'all'
+            ? projectsData
             : projectsData.filter(item => item.category === category);
 
         if (filtered.length === 0) {
@@ -638,10 +638,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div>
                     ${archHtml}
                     <div class="project-card-footer">
-                        ${isPrivate 
-                            ? `<span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Private Repo</span>`
-                            : `<a href="${linkHref}" target="_blank" rel="noopener" class="project-link magnetic-target">${linkText}</a>`
-                        }
+                        ${isPrivate
+                    ? `<span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Private Repo</span>`
+                    : `<a href="${linkHref}" target="_blank" rel="noopener" class="project-link magnetic-target">${linkText}</a>`
+                }
                     </div>
                 </div>
             `;
@@ -670,7 +670,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    window.toggleArch = function(index) {
+    window.toggleArch = function (index) {
         const archBlock = document.getElementById(`arch-${index}`);
         if (archBlock) {
             archBlock.classList.toggle('show');
