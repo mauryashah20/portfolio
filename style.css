@@ -421,10 +421,9 @@ p, span, h1, h2, h3, h4, h5, h6, code, li {
 }
 
 .hero-grid {
-    display: grid;
-    grid-template-columns: 1.25fr 0.75fr;
-    gap: 40px;
-    align-items: center;
+    display: block;
+    max-width: 680px;
+    margin-left: 0;
 }
 
 .status-badge {
