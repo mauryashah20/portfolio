@@ -295,7 +295,11 @@ document.addEventListener('DOMContentLoaded', () => {
             sMouseY = -1000;
         });
 
+        let canvasAnimId = null;
+        let isCanvasVisible = false;
+
         function animateConstellation() {
+            if (!isCanvasVisible) return;
             ctx.clearRect(0, 0, width, height);
 
             for (let i = 0; i < skillNodes.length; i++) {
@@ -340,9 +344,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.fillText(node.label, node.x + 10, node.y + 4);
             });
 
-            requestAnimationFrame(animateConstellation);
+            canvasAnimId = requestAnimationFrame(animateConstellation);
         }
-        animateConstellation();
+
+        // Mobile performance optimization: Pause canvas rendering when out of viewport
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        isCanvasVisible = true;
+                        if (!canvasAnimId) animateConstellation();
+                    } else {
+                        isCanvasVisible = false;
+                        if (canvasAnimId) {
+                            cancelAnimationFrame(canvasAnimId);
+                            canvasAnimId = null;
+                        }
+                    }
+                });
+            }, { threshold: 0.1 });
+            observer.observe(skillsCanvas);
+        } else {
+            isCanvasVisible = true;
+            animateConstellation();
+        }
     }
 
     /* ==========================================================================

@@ -59,9 +59,12 @@ body.is-loading {
     left: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     object-fit: cover;
     z-index: 0;
     pointer-events: none;
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 /* Vignette & Localized Readability Overlay */
@@ -71,9 +74,11 @@ body.is-loading {
     left: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     background: radial-gradient(circle at 50% 50%, rgba(5, 7, 13, 0.2) 0%, rgba(5, 7, 13, 0.55) 65%, rgba(5, 7, 13, 0.88) 100%);
     z-index: 1;
     pointer-events: none;
+    transform: translateZ(0);
 }
 
 /* 3D Perspective Viewport */
