@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       3. ELEGANT MINIMAL MAGNETIC CURSOR
+       3. ELEGANT MINIMAL MAGNETIC CURSOR & CLICK FIXES
        ========================================================================== */
     const cursorDot = document.getElementById('cursor-dot');
     const cursorRing = document.getElementById('cursor-ring');
@@ -117,20 +117,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const magneticTargets = document.querySelectorAll('.magnetic-target');
         magneticTargets.forEach(target => {
-            target.addEventListener('mousemove', (e) => {
-                const rect = target.getBoundingClientRect();
-                const targetX = rect.left + rect.width / 2;
-                const targetY = rect.top + rect.height / 2;
-
-                const distanceX = e.clientX - targetX;
-                const distanceY = e.clientY - targetY;
-
-                target.style.transform = `translate3d(${distanceX * 0.18}px, ${distanceY * 0.18}px, 0)`;
+            target.addEventListener('mouseenter', () => {
                 cursorRing.classList.add('is-hovered');
             });
 
             target.addEventListener('mouseleave', () => {
-                target.style.transform = `translate3d(0px, 0px, 0)`;
                 cursorRing.classList.remove('is-hovered');
             });
         });
@@ -149,6 +140,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Smooth Lenis Scroll for all Hash Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId && targetId !== '#') {
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    if (lenis) {
+                        lenis.scrollTo(targetElement, { offset: -60 });
+                    } else {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            }
+        });
+    });
 
     /* ==========================================================================
        4. 3D GLASS CARD PERSPECTIVE TILT & GLARE EFFECT

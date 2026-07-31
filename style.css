@@ -562,9 +562,16 @@ html.lenis, html.lenis body {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    cursor: pointer;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 50;
     border: 1px solid var(--border-glass);
-    transition: all 0.25s ease;
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn * {
+    pointer-events: none;
 }
 
 .btn-primary {
