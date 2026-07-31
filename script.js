@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.getElementById('start-btn');
 
     let progress = 0;
-    const preloaderDuration = 1800;
+    const preloaderDuration = 1000; // 1 second loading screen
     const startTime = Date.now();
     let preloaderCompleted = false;
 
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (audioStarted) {
                 // If audio already playing seamlessly, finish preloader
-                setTimeout(finishPreloader, 300);
+                setTimeout(finishPreloader, 100);
             } else {
                 // Browser blocked background audio without user gesture; show prompt button
                 if (preloaderSubtext) preloaderSubtext.textContent = 'READY TO LAUNCH';
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
-    }, 30);
+    }, 20);
 
     /* ==========================================================================
        2. LENIS SMOOTH SCROLL & SCROLL LASER TRACKING
