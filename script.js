@@ -1,6 +1,6 @@
 /**
- * MAURYA SHAH - EVENT HORIZON DIGITAL EXPERIENCE (GARGANTUA BLACK HOLE THEME)
- * Video Background Initialization, Lenis Smooth Scroll, GSAP Section Choreography,
+ * MAURYA SHAH - EVENT HORIZON DIGITAL EXPERIENCE (REFINED MOTION & READABILITY)
+ * Video Background, Lenis Inertia Scroll, GSAP Section Choreography,
  * Minimalist Magnetic Cursor, 3D Glass Card Tilt Physics.
  */
 
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const distanceX = e.clientX - targetX;
                 const distanceY = e.clientY - targetY;
 
-                target.style.transform = `translate3d(${distanceX * 0.22}px, ${distanceY * 0.22}px, 0)`;
+                target.style.transform = `translate3d(${distanceX * 0.18}px, ${distanceY * 0.18}px, 0)`;
                 cursorRing.classList.add('is-hovered');
             });
 
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('mouseover', (e) => {
             if (e.target.closest('.project-card')) {
                 cursorRing.classList.add('is-project-hover');
-                if (cursorText) cursorText.textContent = 'VIEW ↗';
+                if (cursorText) cursorText.textContent = 'VIEW';
             }
         });
 
@@ -162,14 +162,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
 
-            const rotateX = ((y - centerY) / centerY) * -6;
-            const rotateY = ((x - centerX) / centerX) * 6;
+            const rotateX = ((y - centerY) / centerY) * -5;
+            const rotateY = ((x - centerX) / centerX) * 5;
 
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.015, 1.015, 1.015)`;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
 
             const glare = card.querySelector('.glare-overlay');
             if (glare) {
-                glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(221, 239, 255, 0.14), transparent 60%)`;
+                glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(221, 239, 255, 0.1), transparent 60%)`;
             }
         });
 
@@ -197,13 +197,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const skillNodes = [
-            { label: 'ESP32', x: width * 0.2, y: height * 0.3, vx: 0.4, vy: -0.3, color: '#C99763' },
-            { label: 'C++', x: width * 0.4, y: height * 0.6, vx: -0.3, vy: 0.5, color: '#DDEFFF' },
-            { label: 'Python', x: width * 0.7, y: height * 0.4, vx: 0.5, vy: 0.2, color: '#C99763' },
-            { label: 'OpenCV', x: width * 0.85, y: height * 0.7, vx: -0.2, vy: -0.4, color: '#DDEFFF' },
-            { label: 'BLE', x: width * 0.3, y: height * 0.8, vx: 0.3, vy: -0.2, color: '#C7D2E4' },
-            { label: 'UDP Video', x: width * 0.6, y: height * 0.2, vx: -0.4, vy: 0.3, color: '#C99763' },
-            { label: 'MediaPipe', x: width * 0.15, y: height * 0.65, vx: 0.2, vy: 0.4, color: '#DDEFFF' }
+            { label: 'ESP32', x: width * 0.2, y: height * 0.3, vx: 0.3, vy: -0.2, color: '#C99763' },
+            { label: 'C++', x: width * 0.4, y: height * 0.6, vx: -0.2, vy: 0.4, color: '#DDEFFF' },
+            { label: 'Python', x: width * 0.7, y: height * 0.4, vx: 0.4, vy: 0.2, color: '#C99763' },
+            { label: 'OpenCV', x: width * 0.85, y: height * 0.7, vx: -0.2, vy: -0.3, color: '#DDEFFF' },
+            { label: 'BLE', x: width * 0.3, y: height * 0.8, vx: 0.2, vy: -0.2, color: '#D1DCED' },
+            { label: 'UDP Video', x: width * 0.6, y: height * 0.2, vx: -0.3, vy: 0.2, color: '#C99763' },
+            { label: 'MediaPipe', x: width * 0.15, y: height * 0.65, vx: 0.2, vy: 0.3, color: '#DDEFFF' }
         ];
 
         let sMouseX = -1000;
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ctx.beginPath();
                         ctx.moveTo(skillNodes[i].x, skillNodes[i].y);
                         ctx.lineTo(skillNodes[j].x, skillNodes[j].y);
-                        ctx.strokeStyle = `rgba(201, 151, 99, ${0.8 - dist / 220})`;
+                        ctx.strokeStyle = `rgba(201, 151, 99, ${0.4 - dist / 350})`;
                         ctx.lineWidth = 1;
                         ctx.stroke();
                     }
@@ -251,20 +251,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const mdy = node.y - sMouseY;
                 const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
                 if (mdist < 100) {
-                    node.x += (mdx / mdist) * 3;
-                    node.y += (mdy / mdist) * 3;
+                    node.x += (mdx / mdist) * 2;
+                    node.y += (mdy / mdist) * 2;
                 }
 
                 ctx.beginPath();
-                ctx.arc(node.x, node.y, 5, 0, Math.PI * 2);
+                ctx.arc(node.x, node.y, 4.5, 0, Math.PI * 2);
                 ctx.fillStyle = node.color;
-                ctx.shadowColor = node.color;
-                ctx.shadowBlur = 8;
                 ctx.fill();
-                ctx.shadowBlur = 0;
 
                 ctx.font = '12px "JetBrains Mono", monospace';
-                ctx.fillStyle = '#F4F8FF';
+                ctx.fillStyle = '#FFFFFF';
                 ctx.fillText(node.label, node.x + 10, node.y + 4);
             });
 
@@ -274,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       6. UNIQUE CINEMATIC SECTION CHOREOGRAPHY (GSAP SCROLLTRIGGER)
+       6. REFINED CINEMATIC SECTION CHOREOGRAPHY (TAMED INTENSITY ~25%)
        ========================================================================== */
     function initHeroChoreography() {
         if (typeof gsap === 'undefined') return;
@@ -282,38 +279,38 @@ document.addEventListener('DOMContentLoaded', () => {
         const tl = gsap.timeline();
 
         tl.fromTo('.hero-anim-1', 
-            { opacity: 0, scale: 0.8, y: -20 },
-            { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: 'back.out(1.7)' }
+            { opacity: 0, y: -15 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
         )
         .fromTo('.hero-anim-2 .mask-content', 
             { y: '100%', clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)' },
-            { y: '0%', clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 0.8, ease: 'power4.out' },
+            { y: '0%', clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 0.7, ease: 'power3.out' },
             '-=0.3'
         )
         .fromTo('.hero-anim-2-sub',
-            { opacity: 0, y: 15 },
-            { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' },
             '-=0.4'
         )
         .fromTo('.hero-anim-3',
-            { opacity: 0, y: 25 },
-            { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
+            { opacity: 0, y: 15 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
             '-=0.4'
         )
         .fromTo('.hero-anim-4 .tag',
-            { opacity: 0, scale: 0, rotation: -10 },
-            { opacity: 1, scale: 1, rotation: 0, duration: 0.5, stagger: 0.08, ease: 'back.out(1.8)' },
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.4, stagger: 0.06, ease: 'power2.out' },
             '-=0.3'
         )
         .fromTo('.hero-anim-5 .btn',
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: 'power3.out' },
+            { opacity: 0, y: 15 },
+            { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out' },
             '-=0.2'
         )
         .fromTo('.hero-anim-widget',
-            { opacity: 0, z: -300, rotateY: 20 },
-            { opacity: 1, z: 0, rotateY: 0, duration: 1, ease: 'power3.out' },
-            '-=0.8'
+            { opacity: 0, y: 25 },
+            { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
+            '-=0.6'
         );
     }
 
@@ -324,28 +321,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const aboutTl = gsap.timeline({
             scrollTrigger: {
                 trigger: '#about',
-                start: 'top 75%',
+                start: 'top 80%',
                 toggleActions: 'play none none none'
             }
         });
 
         aboutTl.fromTo('.about-anim-tag',
-            { opacity: 0, x: -40 },
-            { opacity: 1, x: 0, duration: 0.6, ease: 'power3.out' }
+            { opacity: 0, x: -20 },
+            { opacity: 1, x: 0, duration: 0.5, ease: 'power2.out' }
         )
         .fromTo('.about-anim-heading .mask-content',
             { clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)' },
-            { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 0.8, ease: 'power3.out' },
+            { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 0.7, ease: 'power3.out' },
             '-=0.3'
         )
         .fromTo('.about-anim-card',
-            { opacity: 0, y: 40, rotateX: 15 },
-            { opacity: 1, y: 0, rotateX: 0, duration: 0.8, ease: 'power3.out' },
+            { opacity: 0, y: 25 },
+            { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
             '-=0.4'
         )
         .fromTo('.about-anim-stat',
-            { opacity: 0, rotateY: 45, transformOrigin: 'left center' },
-            { opacity: 1, rotateY: 0, duration: 0.6, stagger: 0.15, ease: 'power3.out' },
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.5, stagger: 0.12, ease: 'power2.out' },
             '-=0.5'
         );
 
@@ -353,58 +350,46 @@ document.addEventListener('DOMContentLoaded', () => {
         const skillsTl = gsap.timeline({
             scrollTrigger: {
                 trigger: '#skills',
-                start: 'top 75%',
+                start: 'top 80%',
                 toggleActions: 'play none none none'
             }
         });
 
         skillsTl.fromTo('.skills-anim-tag',
-            { opacity: 0, y: -20 },
+            { opacity: 0, y: -15 },
             { opacity: 1, y: 0, duration: 0.5 }
         )
         .fromTo('.skills-anim-heading .mask-content',
             { y: '100%' },
-            { y: '0%', duration: 0.7, ease: 'power4.out' },
+            { y: '0%', duration: 0.6, ease: 'power3.out' },
             '-=0.3'
         )
         .fromTo('.skills-anim-canvas',
-            { opacity: 0, scale: 0.95 },
-            { opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out' },
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
             '-=0.3'
         )
-        .fromTo('.skills-anim-card:nth-child(1)',
-            { opacity: 0, x: -100, y: 60 },
-            { opacity: 1, x: 0, y: 0, duration: 0.7, ease: 'power3.out' },
+        .fromTo('.skills-anim-card',
+            { opacity: 0, y: 25 },
+            { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease: 'power2.out' },
             '-=0.4'
-        )
-        .fromTo('.skills-anim-card:nth-child(2)',
-            { opacity: 0, y: 100 },
-            { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' },
-            '-=0.5'
-        )
-        .fromTo('.skills-anim-card:nth-child(3)',
-            { opacity: 0, x: 100, y: 60 },
-            { opacity: 1, x: 0, y: 0, duration: 0.7, ease: 'power3.out' },
-            '-=0.5'
         );
 
         // EXPERIENCE CHOREOGRAPHY
         const expCards = document.querySelectorAll('.exp-anim-card');
-        expCards.forEach((card, index) => {
-            const dir = index % 2 === 0 ? -120 : 120;
+        expCards.forEach((card) => {
             gsap.fromTo(card,
-                { opacity: 0, x: dir, rotateX: 20 },
+                { opacity: 0, y: 25 },
                 {
                     scrollTrigger: {
                         trigger: card,
-                        start: 'top 80%',
+                        start: 'top 85%',
                         toggleActions: 'play none none none'
                     },
                     opacity: 1,
-                    x: 0,
-                    rotateX: 0,
-                    duration: 0.8,
-                    ease: 'power3.out'
+                    y: 0,
+                    duration: 0.7,
+                    ease: 'power2.out'
                 }
             );
         });
@@ -413,23 +398,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const projTl = gsap.timeline({
             scrollTrigger: {
                 trigger: '#projects',
-                start: 'top 75%',
+                start: 'top 80%',
                 toggleActions: 'play none none none'
             }
         });
 
         projTl.fromTo('.proj-anim-tag',
-            { opacity: 0, x: -30 },
+            { opacity: 0, x: -20 },
             { opacity: 1, x: 0, duration: 0.5 }
         )
         .fromTo('.proj-anim-heading .mask-content',
             { clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)' },
-            { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 0.8, ease: 'power3.out' },
+            { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 0.7, ease: 'power3.out' },
             '-=0.3'
         )
         .fromTo('.proj-anim-filters .filter-btn',
-            { opacity: 0, scale: 0.8 },
-            { opacity: 1, scale: 1, duration: 0.4, stagger: 0.08, ease: 'back.out(1.5)' },
+            { opacity: 0, y: 15 },
+            { opacity: 1, y: 0, duration: 0.4, stagger: 0.06, ease: 'power2.out' },
             '-=0.4'
         );
 
@@ -437,29 +422,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const contactTl = gsap.timeline({
             scrollTrigger: {
                 trigger: '#contact',
-                start: 'top 75%',
+                start: 'top 80%',
                 toggleActions: 'play none none none'
             }
         });
 
         contactTl.fromTo('.contact-anim-tag',
-            { opacity: 0, y: -20 },
+            { opacity: 0, y: -15 },
             { opacity: 1, y: 0, duration: 0.5 }
         )
         .fromTo('.contact-anim-heading .mask-content',
             { y: '100%' },
-            { y: '0%', duration: 0.7, ease: 'power4.out' },
+            { y: '0%', duration: 0.6, ease: 'power3.out' },
             '-=0.3'
         )
         .fromTo('.contact-anim-left',
-            { opacity: 0, x: -140, rotateY: 15 },
-            { opacity: 1, x: 0, rotateY: 0, duration: 0.9, ease: 'power3.out' },
+            { opacity: 0, y: 25 },
+            { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
             '-=0.4'
         )
         .fromTo('.contact-anim-right',
-            { opacity: 0, x: 140, rotateY: -15 },
-            { opacity: 1, x: 0, rotateY: 0, duration: 0.9, ease: 'power3.out' },
-            '-=0.9'
+            { opacity: 0, y: 25 },
+            { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
+            '-=0.7'
         );
     }
 
@@ -533,7 +518,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', scrollSpy);
 
     /* ==========================================================================
-       8. PROJECT RENDERING & CATEGORY FILTERS (WITH 3D FLY-IN)
+       8. PROJECT RENDERING & CATEGORY FILTERS
        ========================================================================== */
     const projectGrid = document.getElementById('project-grid-container');
     const filterButtons = document.querySelectorAll('#project-filters .filter-btn');
@@ -576,7 +561,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const isPrivate = project.status === 'private' && linkHref === '#';
 
             const archHtml = project.architecture ? `
-                <button class="arch-btn magnetic-target" onclick="toggleArch('${project.index}')">📐 Architecture Spec</button>
+                <button class="arch-btn magnetic-target" onclick="toggleArch('${project.index}')">Architecture Spec</button>
                 <div class="arch-block" id="arch-${project.index}">${project.architecture}</div>
             ` : '';
 
@@ -595,7 +580,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${archHtml}
                     <div class="project-card-footer">
                         ${isPrivate 
-                            ? `<span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">🔒 Private Repo</span>`
+                            ? `<span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">Private Repo</span>`
                             : `<a href="${linkHref}" target="_blank" rel="noopener" class="project-link magnetic-target">${linkText}</a>`
                         }
                     </div>
@@ -606,20 +591,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (typeof gsap !== 'undefined') {
                 gsap.fromTo(card,
-                    { opacity: 0, z: -250, scale: 0.9, y: 50 },
+                    { opacity: 0, y: 25 },
                     {
                         scrollTrigger: {
                             trigger: card,
-                            start: 'top 85%',
+                            start: 'top 88%',
                             toggleActions: 'play none none none'
                         },
                         opacity: 1,
-                        z: 0,
-                        scale: 1,
                         y: 0,
-                        duration: 0.7,
-                        delay: (idx % 3) * 0.12,
-                        ease: 'power3.out'
+                        duration: 0.6,
+                        delay: (idx % 3) * 0.1,
+                        ease: 'power2.out'
                     }
                 );
             }
@@ -658,7 +641,7 @@ document.addEventListener('DOMContentLoaded', () => {
         copyBtn.addEventListener('click', () => {
             navigator.clipboard.writeText(emailText.textContent.trim()).then(() => {
                 const originalText = copyBtn.textContent;
-                copyBtn.textContent = 'COPIED! 🔥';
+                copyBtn.textContent = 'COPIED';
                 copyBtn.style.background = 'var(--warm-highlight)';
                 copyBtn.style.color = '#05070D';
 
@@ -679,7 +662,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
 
             if (formFeedback) {
-                formFeedback.textContent = '⚡ Telemetry received! Thanks for reaching out!';
+                formFeedback.textContent = 'Message received. Thank you for reaching out.';
                 formFeedback.style.color = 'var(--warm-highlight)';
             }
 
