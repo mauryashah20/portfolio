@@ -26,11 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Background Audio autoplay handler
+    // Background Audio Handler (Starts on first click/interaction anywhere on the site)
     let audioStarted = false;
 
-    // Set default UI to SOUND ON
-    updateAudioUI(true);
+    // Default UI state is SOUND OFF until the user clicks
+    updateAudioUI(false);
 
     function playAudio() {
         if (!bgAudio) return;
@@ -38,9 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
             audioStarted = true;
             updateAudioUI(true);
         }).catch(err => {
-            console.log('Audio autoplay blocked by browser policy:', err);
-            // Retain SOUND ON in UI so first user interaction seamlessly starts audio
+            console.log('Audio play failed:', err);
             audioStarted = false;
+            updateAudioUI(false);
         });
     }
 
@@ -61,33 +61,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Try playing audio immediately on initialization
-    playAudio();
-
-    // Fallback: unlock audio on first user interaction if blocked by browser policy
-    function unlockAudioOnInteraction() {
-        if (!audioStarted && bgAudio) {
+    // Start sound on first click or interaction anywhere on the website
+    function startAudioOnFirstInteraction() {
+        if (!audioStarted) {
             playAudio();
         }
-        window.removeEventListener('click', unlockAudioOnInteraction);
-        window.removeEventListener('keydown', unlockAudioOnInteraction);
-        window.removeEventListener('touchstart', unlockAudioOnInteraction);
+        window.removeEventListener('click', startAudioOnFirstInteraction);
+        window.removeEventListener('keydown', startAudioOnFirstInteraction);
+        window.removeEventListener('touchstart', startAudioOnFirstInteraction);
+        window.removeEventListener('pointerdown', startAudioOnFirstInteraction);
     }
-    window.addEventListener('click', unlockAudioOnInteraction);
-    window.addEventListener('keydown', unlockAudioOnInteraction);
-    window.addEventListener('touchstart', unlockAudioOnInteraction);
+
+    window.addEventListener('click', startAudioOnFirstInteraction);
+    window.addEventListener('keydown', startAudioOnFirstInteraction);
+    window.addEventListener('touchstart', startAudioOnFirstInteraction);
+    window.addEventListener('pointerdown', startAudioOnFirstInteraction);
 
     // Audio Toggle Button Event Listener
     if (audioToggle && bgAudio) {
         audioToggle.addEventListener('click', (e) => {
             e.stopPropagation();
             if (bgAudio.paused) {
-                bgAudio.play().then(() => {
-                    audioStarted = true;
-                    updateAudioUI(true);
-                }).catch(err => console.error('Play error:', err));
+                playAudio();
             } else {
                 bgAudio.pause();
+                audioStarted = false;
                 updateAudioUI(false);
             }
         });
